@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¡El 1er Añito de Katya Giselle!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS (CSS) --- */
+        :root {
+            --color-amarillo: #FFD54F;
+            --color-naranja: #FF8F00;
+            --color-rojo: #E53935;
+            --color-azul: #42A5F5;
+            --color-fondo: #FFF8E1;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background-color: var(--color-fondo);
+            background-image: radial-gradient(rgba(255, 213, 79, 0.3) 10%, transparent 10%);
+            background-size: 30px 30px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden; /* IMPORTANTE: Evita scroll horizontal en Android */
+            width: 100vw;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            border: 4px dashed var(--color-amarillo);
+            z-index: 1; 
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--color-naranja);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--color-amarillo);
+            line-height: 1.2;
+        }
+
+        .invitacion-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            border: 3px solid white;
+            outline: 3px solid var(--color-azul);
+        }
+
+        .countdown-box {
+            background: var(--color-amarillo);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .countdown-title {
+           font-weight: 700;
+           color: var(--color-rojo);
+           font-size: 1.2em;
+           margin-bottom: 5px;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Fredoka One', cursive;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .time-unit {
+            background: var(--color-naranja);
+            padding: 8px;
+            border-radius: 10px;
+            min-width: 45px;
+        }
+        .time-unit span {
+            display: block;
+            font-size: 1.5em;
+        }
+        .time-label {
+            font-size: 0.7em;
+            font-family: 'Baloo 2', cursive;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 90%;
+            padding: 15px 0;
+            margin: 15px auto;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+
+        .btn-maps {
+            background-color: var(--color-azul);
+        }
+        
+        .footer-note {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        /* --- ABEJITAS VOLADORAS (Corrección de dirección y visibilidad) --- */
+        .bees-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* IMPORTANTE: Permite que los clicks pasen a través de las abejas a los botones */
+            pointer-events: none; 
+            /* Z-index alto para que vuelen POR ENCIMA de la tarjeta en el celular */
+            z-index: 9999; 
+            overflow: hidden;
+        }
+
+        .bee {
+            position: absolute;
+            font-size: 2.5rem;
+            left: -20%;
+            opacity: 0.9;
+            animation-name: volar;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(2px 5px 3px rgba(0,0,0,0.2));
+            will-change: transform;
+        }
+
+        @keyframes volar {
+            /* Agregamos scaleX(-1) para voltear la abeja y que mire a la derecha */
+            0%   { transform: translateX(0) translateY(0) rotate(5deg) scaleX(-1); }
+            25%  { transform: translateX(35vw) translateY(-20px) rotate(-5deg) scaleX(-1); }
+            50%  { transform: translateX(70vw) translateY(15px) rotate(5deg) scaleX(-1); }
+            75%  { transform: translateX(105vw) translateY(-10px) rotate(-5deg) scaleX(-1); }
+            100% { transform: translateX(130vw) translateY(0) rotate(5deg) scaleX(-1); }
+        }
+
+        /* Tiempos variados */
+        .bee1 { top: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .bee2 { top: 40%; animation-duration: 20s; animation-delay: -5s; font-size: 2rem; opacity: 0.8; }
+        .bee3 { top: 80%; animation-duration: 18s; animation-delay: 2s; }
+        .bee4 { top: 25%; animation-duration: 25s; animation-delay: -12s; font-size: 2.2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="bees-container">
+        <span class="bee bee1">🐝</span>
+        <span class="bee bee2">🐝</span>
+        <span class="bee bee3">🐝</span>
+        <span class="bee bee4">🐝</span>
+    </div>
+
+    <div class="container">
+        <h1>¡Mi Primer Añito! 🐝</h1>
+        
+        <img src="Invitacion.png" alt="Invitación de Katya Giselle" class="invitacion-img">
+
+        <div class="countdown-box">
+            <div class="countdown-title">¡Falta muy poco!</div>
+            <div id="countdown">
+                <div class="time-unit"><span id="days">00</span><div class="time-label">Días</div></div>
+                <div class="time-unit"><span id="hours">00</span><div class="time-label">Horas</div></div>
+                <div class="time-unit"><span id="minutes">00</span><div class="time-label">Min</div></div>
+                <div class="time-unit"><span id="seconds">00</span><div class="time-label">Seg</div></div>
+            </div>
+        </div>
+
+        <a href="https://wa.me/50254935406?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Katya%20Giselle%20" class="btn btn-whatsapp" target="_blank">
+            📞 Confirmar Asistencia
+        </a>
+
+        <a href="https://goo.gl/maps/jeKF1CkauV37eBp88" class="btn btn-maps" target="_blank">
+            📍 ¡¡GUIAME MANGUU!!
+        </a>
+        
+        <p class="footer-note">¡Te esperamos para celebrar con Katya!</p>
+    </div>
+
+    <script>
+        /* --- JavaScript: Cuenta Regresiva --- */
+        const eventDate = new Date(2026, 1, 22, 13, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.querySelector('.countdown-title').innerText = "¡Hoy es la fiesta! 🎉";
+                document.getElementById("countdown").style.display = "none";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        updateCountdown();
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
